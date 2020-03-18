@@ -158,7 +158,7 @@ gpgcheck=1
 repo_gpgcheck=1
 gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
-	yum -y install kubelet-1.13.1 kubeadm-1.13.1 kubectl-1.13.1 kubernetes-cni-0.6.0
+	yum -y install kubelet-1.13.4 kubeadm-1.13.4 kubectl-1.13.4 kubernetes-cni-0.6.0
 	yum list installed | grep kube
 	systemctl daemon-reload
 	systemctl enable kubelet
@@ -166,13 +166,13 @@ EOF
 }
 
 install_masterk8s(){
-	images=(kube-proxy:v1.13.1
+	images=(kube-proxy:v1.13.4
         pause:3.1
         coredns:1.2.6)
 	for imagename in ${images[@]}; do
-	docker pull mathlsj/$imagename
-	docker tag mathlsj/$imagename k8s.gcr.io/$imagename
-	docker rmi mathlsj/$imagename
+	docker pull zhaoyansheng/$imagename
+	docker tag zhaoyansheng/$imagename k8s.gcr.io/$imagename
+	docker rmi zhaoyansheng/$imagename
 	done
 
 	docker pull quay.io/coreos/flannel:v0.10.0-amd64

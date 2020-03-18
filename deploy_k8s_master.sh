@@ -15,7 +15,7 @@ log="./setup.log"  #操作日志存放路径
 fsize=2000000         
 exec 2>>$log  #如果执行过程中有错误信息均输出到日志文件中
 
-echo -e "\033[31m 这个是k8sV1.13.1集群一键部署脚本！欢迎关注我的个人公众号“devops的那些事”获得更多实用工具！Please continue to enter or ctrl+C to cancel \033[0m"
+echo -e "\033[31m 这个是k8sV1.13.4集群一键部署脚本！欢迎关注我的个人公众号“devops的那些事”获得更多实用工具！Please continue to enter or ctrl+C to cancel \033[0m"
 sleep 5
 #yum update
 yum_update(){
@@ -169,7 +169,7 @@ gpgcheck=1
 repo_gpgcheck=1
 gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
-	yum -y install kubelet-1.13.1 kubeadm-1.13.1 kubectl-1.13.1 kubernetes-cni-0.6.0
+	yum -y install kubelet-1.13.4 kubeadm-1.13.4 kubectl-1.13.4 kubernetes-cni-0.6.0
 	yum list installed | grep kube
 	systemctl daemon-reload
 	systemctl enable kubelet
@@ -177,17 +177,17 @@ EOF
 }
 
 install_masterk8s(){
-	images=(kube-scheduler:v1.13.1
-			kube-proxy:v1.13.1
-			kube-controller-manager:v1.13.1
-			kube-apiserver:v1.13.1
+	images=(kube-scheduler:v1.13.4
+			kube-proxy:v1.13.4
+			kube-controller-manager:v1.13.4
+			kube-apiserver:v1.13.4
 			pause:3.1
 			coredns:1.2.6
 			etcd:3.2.24)
 	for imagename in ${images[@]}; do
-	docker pull mathlsj/$imagename
-	docker tag mathlsj/$imagename k8s.gcr.io/$imagename
-	docker rmi mathlsj/$imagename
+	docker pull zhaoyansheng163/$imagename
+	docker tag zhaoyansheng163/$imagename k8s.gcr.io/$imagename
+	docker rmi zhaoyansheng163/$imagename
 	done
 
 	docker pull quay.io/coreos/flannel:v0.10.0-amd64
