@@ -1,6 +1,12 @@
-# centos7一键部署deploy_Kubernetes:v1.13.1脚本
+# centos7一键部署deploy_Kubernetes:v1.13.4脚本
 
 # 后续脚本更新统一由kkitDeploy项目持续更新相应脚本
+
+致谢：本项目参考 https://github.com/luckman666/deploy_Kubernetes-v1.13.1  只是稍作调整
+
+感谢作者luckman666 开源
+
+
 
 请移步至kkitDeploy项目
 
