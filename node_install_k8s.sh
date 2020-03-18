@@ -143,7 +143,7 @@ echo $hash_value
 #install docker
 install_docker() {
 yum-config-manager --add-repo  https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-yum install -y --setopt=obsoletes=0 docker-ce-18.06.1.ce-3.el7
+yum install -y --setopt=obsoletes=0 docker-ce-18.06.3.ce-3.el7
 systemctl start docker
 systemctl enable docker
 }
