@@ -6,6 +6,8 @@
 
 感谢作者luckman666 开源
 
+centos7.4 版本已验证通过，可放心使用。有问题请提交issue，谢谢
+
 
 
 请移步至kkitDeploy项目
