@@ -42,24 +42,24 @@ k8s 1.13.1一键部署地址：https://github.com/luckman666/deploy_Kubernetes-v
 setupkernel(){
 
  rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
- 
+
  rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
- 
+
  yum --enablerepo=elrepo-kernel install -y kernel-lt kernel-lt-devel
- 
+
  grub2-set-default 0
- 
+
  reboot
- 
+
 }
 
 setupkernel
 
 # 部署k8s集群具体实现步骤：
 
-git clone https://github.com/luckman666/deploy_Kubernetes-v1.13.1.git
+git clone https://github.com/zhaoyansheng163/deploy_Kubernetes-v1.13.4.git
 
-cd deploy_Kubernetes-v1.13.1/
+cd deploy_Kubernetes-v1.13.4/
 
 chmod -R 755 .
 
@@ -112,7 +112,7 @@ kubectl get service --all-namespaces | grep kubernetes-dashboard
 例如结果：
 kube-system   kubernetes-dashboard   NodePort    10.101.25.47   <none>        443:31660/TCP   22m
 那么你就输入https://nodeIP:31660来登录
-	
+​	
 查看登录时候的token
 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
