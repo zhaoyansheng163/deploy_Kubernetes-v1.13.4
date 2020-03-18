@@ -185,9 +185,9 @@ install_masterk8s(){
 			coredns:1.2.6
 			etcd:3.2.24)
 	for imagename in ${images[@]}; do
-	docker pull zhaoyansheng163/$imagename
-	docker tag zhaoyansheng163/$imagename k8s.gcr.io/$imagename
-	docker rmi zhaoyansheng163/$imagename
+	docker pull zhaoyansheng/$imagename
+	docker tag zhaoyansheng/$imagename k8s.gcr.io/$imagename
+	docker rmi zhaoyansheng/$imagename
 	done
 
 	docker pull quay.io/coreos/flannel:v0.10.0-amd64
