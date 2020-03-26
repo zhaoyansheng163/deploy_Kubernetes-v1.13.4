@@ -127,6 +127,7 @@ done
 
 rootssh_trust(){
 
+echo '###########Enter  rootssh_trust  ---------'
 for host in `cat ./new_hostname_list.config`
 do
 if [ `hostname` != $host ];then
@@ -209,11 +210,13 @@ init_k8s(){
 
 token_shar_value(){
 
+echo "---------------------------enter token_shar_value" 
 /usr/bin/kubeadm token list > token_shar_value.text
 echo tocken=$(sed -n "2, 1p" token_shar_value.text | awk '{print $1}') >> base.config
 openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //' > token_shar_value.text
 echo "sha_value=$(cat token_shar_value.text)"  >> base.config
 rm -rf token_shar_value.text
+echo "---------------------------enter token_shar_value end" 
 
 }
 
