@@ -220,7 +220,7 @@ gpgcheck=0
 repo_gpgcheck=0
 gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
-	yum -y install kubelet-${k8s_version} kubeadm-${k8s_version} kubectl-${k8s_version} kubernetes-cni-0.7.5
+	yum -y install kubelet-${k8s_version} kubeadm-${k8s_version} kubectl-${k8s_version} kubernetes-cni-0.6.0
 	yum list installed | grep kube
 	systemctl daemon-reload
 	systemctl enable kubelet
@@ -256,12 +256,12 @@ install_masterk8s(){
     done
     
 	done
-	docker pull registry.cn-hangzhou.aliyuncs.com/openthings/k8s-gcr-io-coredns:1.3.1
-	docker tag registry.cn-hangzhou.aliyuncs.com/openthings/k8s-gcr-io-coredns:1.3.1 k8s.gcr.io/coredns:1.3.1
-	docker rmi registry.cn-hangzhou.aliyuncs.com/openthings/k8s-gcr-io-coredns:1.3.1
-    docker pull quay-mirror.qiniu.com/coreos/flannel:v0.11.0-amd64
-    docker tag quay-mirror.qiniu.com/coreos/flannel:v0.11.0-amd64 quay.io/coreos/flannel:v0.11.0-amd
-	docker rmi quay-mirror.qiniu.com/coreos/flannel:v0.11.0-amd64
+	docker pull registry.cn-hangzhou.aliyuncs.com/openthings/k8s-gcr-io-coredns:1.3.4
+	docker tag registry.cn-hangzhou.aliyuncs.com/openthings/k8s-gcr-io-coredns:1.3.4 k8s.gcr.io/coredns:1.3.4
+	docker rmi registry.cn-hangzhou.aliyuncs.com/openthings/k8s-gcr-io-coredns:1.3.4
+    docker pull quay-mirror.qiniu.com/coreos/flannel:v0.10.0-amd64
+    docker tag quay-mirror.qiniu.com/coreos/flannel:v0.10.0-amd64 quay.io/coreos/flannel:v0.10.0-amd
+	docker rmi quay-mirror.qiniu.com/coreos/flannel:v0.10.0-amd64
 }
 
 install_flannel(){
