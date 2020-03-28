@@ -79,14 +79,14 @@ cd /root
 
 ./deploy_k8s_master.sh
 
-备注：如果因网速问题，多次尝试未成功。建议下载百度云盘的k8s镜像：k8s.tar  
+备注1：如果因网速问题，多次尝试未成功。建议下载百度云盘的k8s镜像：k8s.tar  
 
 链接：https://pan.baidu.com/s/1eDn6tbfb5URDlttUSQDR6w 
 提取码：wjdc
 
 然后在所有node上：docker load -i k8s.tar
 
-然后注释掉 deploy_k8s_master.sh、node_install_k8s.sh
+然后注释掉 deploy_k8s_master.sh、node_install_k8s.sh  中的下列几行
 
 	#for imagename in ${images[@]}; do
 	#docker pull zhaoyansheng/$imagename
@@ -96,6 +96,18 @@ cd /root
 	
 	#docker pull quay.io/coreos/flannel:v0.10.0-amd64
 然后再重新执行即可。
+
+备注2：生产环境部署有内网和公网IP的情况下，如果想让两个IP均可被管理，则需要修改 deploy_k8s_master.sh中下列的内容：
+
+```
+kubeadm init --kubernetes-version=$k8s_version --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$masterip
+```
+
+修改为：
+
+```
+kubeadm init --kubernetes-version=$k8s_version --pod-network-cidr=10.244.0.0/16  --apiserver-advertise-address=0.0.0.0 --apiserver-cert-extra-sans=$masterip,PUBLICIP1,PUBLICIP2
+```
 
 
 
