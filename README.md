@@ -97,7 +97,7 @@ cd /root
 	#docker pull quay.io/coreos/flannel:v0.10.0-amd64
 然后再重新执行即可。
 
-备注2：生产环境部署有内网和公网IP的情况下，如果想让两个IP均可被管理，则需要修改 deploy_k8s_master.sh中下列的内容：
+备注2(在云服务器验证通过)：生产环境部署有内网和公网IP的情况下，如果想让两个IP均可被管理，则需要修改 deploy_k8s_master.sh中下列的内容：
 
 ```
 kubeadm init --kubernetes-version=$k8s_version --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$masterip
