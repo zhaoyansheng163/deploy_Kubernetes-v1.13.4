@@ -199,7 +199,8 @@ init_k8s(){
 	kubeadm reset -f
 	
 	kubeadm init --kubernetes-version=$k8s_version --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$masterip
-	
+	#kubeadm init --kubernetes-version=$k8s_version --pod-network-cidr=10.244.0.0/16  --apiserver-advertise-address=0.0.0.0 --apiserver-cert-extra-sans=$masterip,PUBLICIP1,PUBLICIP2
+
 	mkdir -p /root/.kube
 	cp /etc/kubernetes/admin.conf /root/.kube/config
 	chown $(id -u):$(id -g) /root/.kube/config
