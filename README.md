@@ -9,11 +9,6 @@
 centos7.4 版本已验证通过，可放心使用。有问题请提交issue，谢谢
 
 
-
-请移步至kkitDeploy项目
-
-https://github.com/luckman666/kkitdeploy_server
-
 ##########################################################################
 
 k8s 1.15.2一键部署地址： https://github.com/luckman666/k8s1.15.2
